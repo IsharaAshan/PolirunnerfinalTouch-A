@@ -85,13 +85,6 @@
             },
             {
                 "url": [
-                    "assets/audio/logMsgSfx.wav"
-                ],
-                "type": "audio",
-                "key": "logMsgSfx"
-            },
-            {
-                "url": [
                     "assets/audio/logsfx.wav"
                 ],
                 "type": "audio",

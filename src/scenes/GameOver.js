@@ -61,7 +61,7 @@ export default class GameOver extends Phaser.Scene {
 	preload() {
 		this.load.audio('popup', 'assets/sounds/popup.wav');
 		this.load.audio('logsfx', 'assets/sounds/logsfx.wav');
-		this.load.audio('click', 'assets/sounds/click.wav');
+		this.load.audio('submitsfx', 'assets/sounds/submitsfx.wav'); // Changed from 'click' to 'submitsfx'
 	}
 
 	create() {
@@ -74,7 +74,7 @@ export default class GameOver extends Phaser.Scene {
         
 		// Create a curved corner panel on the right side - position more to the left
 		const panelWidth = 250;
-		const panelHeight = height * 0.7;
+		const panelHeight = height * 0.8; // Increased from 0.7 to 0.8 to have more vertical space
 		 // Directly position the panel in its final position (no animation)
 		const finalPanelX = width - panelWidth - 40;
 		const rightPanelY = (height - panelHeight) / 2;
@@ -94,7 +94,7 @@ export default class GameOver extends Phaser.Scene {
 		// Add sound effects
 		this.popupSound = this.sound.add('popup');
 		this.logsfxSound = this.sound.add('logsfx');
-		this.clickSound = this.sound.add('click');
+		this.submitsfxSound = this.sound.add('submitsfx'); // Changed from 'clickSound' to 'submitsfxSound'
 
 		// Play popup sound when the scene starts
 		this.popupSound.play();
@@ -156,7 +156,7 @@ export default class GameOver extends Phaser.Scene {
 		this.leaderboardGroup.add(graphics);
 
 		// Load leaderboard data from Supabase
-		this.loadLeaderboardData(finalPanelX, rightPanelY + 130, panelWidth);
+		this.loadLeaderboardData(finalPanelX, rightPanelY + 120, panelWidth); // Moved up by 10px
 
 		// Create form container element without animation CSS
 		const formContainer = document.createElement('div');
@@ -240,8 +240,8 @@ export default class GameOver extends Phaser.Scene {
 						<style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>
 						<p style="margin-top: 10px; color: #ffffff;">Submitting score...</p>
 					</div>
-					<div id="success-message" style="display: none; padding: 15px; background-color: rgba(76, 175, 80, 0.3); border: 2px solid #4CAF50; border-radius: 8px; margin-bottom: 15px;">
-						<p style="color: #ffffff; font-size: 18px; font-weight: bold;">Score submitted successfully!</p>
+					<div id="success-message" style="display: none; padding: 15px; margin-bottom: 15px;">
+						<p style="color: #ffffff; font-size: 20px; font-weight: bold; text-shadow: 0 0 8px rgba(76, 175, 80, 0.8);">Score submitted successfully!</p>
 					</div>
 					<div id="error-message" style="display: none; padding: 15px; background-color: rgba(244, 67, 54, 0.3); border: 2px solid #F44336; border-radius: 8px; margin-bottom: 15px;">
 						<p style="color: #ffffff; font-size: 18px; font-weight: bold;">Failed to submit score. Please try again.</p>
@@ -299,7 +299,7 @@ export default class GameOver extends Phaser.Scene {
 
 		form.addEventListener('submit', (e) => {
 			e.preventDefault();
-			this.clickSound.play();
+			this.submitsfxSound.play(); // Changed from 'clickSound' to 'submitsfxSound'
 
 			const playerNickname = nicknameInput.value.trim();
 			const bscAddress = bscInput.value.trim();
@@ -342,19 +342,8 @@ export default class GameOver extends Phaser.Scene {
 							loadingIndicator.style.display = 'none';
 							successMessage.style.display = 'block';
 							
-							// Change submit button to continue button
-							submitButton.textContent = 'Continue';
-							submitButton.disabled = false;
-							submitButton.style.opacity = '1';
-							
-							// Update the form submission to handle the "Continue" action
-							submitButton.onclick = (event) => {
-								event.preventDefault();
-								formContainer.remove();
-								window.removeEventListener('resize', this.adjustFormToCanvas);
-								// Optional: navigate to another scene
-								// this.scene.start('AnotherScene');
-							};
+							 // Hide the submit button completely instead of changing to "Continue"
+							submitButton.style.display = 'none';
 							
 							// Reload the leaderboard to show updated data
 							const { width, height } = this.scale;
@@ -364,6 +353,7 @@ export default class GameOver extends Phaser.Scene {
 						})
 						.catch(error => {
 							console.error('Error submitting score:', error);
+							this.logsfxSound.play(); // Add error sound for failed submissions
 							
 							// Hide loading and show error message
 							loadingIndicator.style.display = 'none';
@@ -379,6 +369,7 @@ export default class GameOver extends Phaser.Scene {
 					
 					// Hide loading and show error message after a brief delay
 					setTimeout(() => {
+						this.logsfxSound.play(); // Add error sound for service unavailable
 						loadingIndicator.style.display = 'none';
 						errorMessage.style.display = 'block';
 						errorMessage.querySelector('p').textContent = "Submission service unavailable";
@@ -403,7 +394,7 @@ export default class GameOver extends Phaser.Scene {
 		const homeButton = document.getElementById('home-button');
 
 		restartButton.addEventListener('click', () => {
-			this.clickSound.play();
+			this.submitsfxSound.play(); // Changed from 'clickSound' to 'submitsfxSound'
 			// Clean up DOM elements and event listeners
 			formContainer.remove();
 			window.removeEventListener('resize', this.adjustFormToCanvas);
@@ -413,7 +404,7 @@ export default class GameOver extends Phaser.Scene {
 		});
 
 		homeButton.addEventListener('click', () => {
-			this.clickSound.play();
+			this.submitsfxSound.play(); // Changed from 'clickSound' to 'submitsfxSound'
 			// Clean up DOM elements and event listeners
 			formContainer.remove();
 			window.removeEventListener('resize', this.adjustFormToCanvas);
@@ -593,7 +584,7 @@ export default class GameOver extends Phaser.Scene {
 
 	// Add method to display leaderboard entries
 	displayLeaderboardData(leaderboardData, x, startY, panelWidth) {
-		const spacing = 40; // Vertical space between entries
+		const spacing = 35; // Reduced from 40 to 35 to fit more entries
 		
 		// Clear any existing leaderboard entries
 		if (this.leaderboardEntries) {
@@ -625,11 +616,23 @@ export default class GameOver extends Phaser.Scene {
 
 		// Display each entry without animations
 		leaderboardData.forEach((entry, index) => {
+			// Add rank number (1-10)
+			const rankText = this.add.text(
+				x + 15,
+				startY + index * spacing,
+				`${index + 1}`,
+				{
+					fontFamily: 'ApexMk2-BoldExtended, Arial',
+					fontSize: '14px',
+					color: '#ffffff'
+				}
+			);
+			
 			// Nickname text (left-aligned)
 			const nickname = entry.nick_name || "Anonymous";
 			const displayName = nickname.length > 10 ? nickname.substring(0, 9) + "..." : nickname;
 			const nameText = this.add.text(
-				x + 30,
+				x + 35, // Moved right to make room for rank number
 				startY + index * spacing,
 				displayName,
 				{
@@ -652,14 +655,35 @@ export default class GameOver extends Phaser.Scene {
 			);
 			scoreText.setOrigin(1, 0); // Right align the score
 
-			this.leaderboardEntries.push(nameText, scoreText);
+			this.leaderboardEntries.push(rankText, nameText, scoreText);
 
 			// Add entries to group without animations
 			if (this.leaderboardGroup) {
+				this.leaderboardGroup.add(rankText);
 				this.leaderboardGroup.add(nameText);
 				this.leaderboardGroup.add(scoreText);
 			}
 		});
+		
+		// Add a note at the bottom if we have 10 entries
+		if (leaderboardData.length === 10) {
+			const bottomNote = this.add.text(
+				x + panelWidth / 2,
+				startY + 10 * spacing + 5,
+				"Top 10 Players",
+				{
+					fontFamily: 'ApexMk2-BoldExtended, Arial',
+					fontSize: '12px',
+					color: '#aaaaaa',
+					align: 'center'
+				}
+			);
+			bottomNote.setOrigin(0.5, 0);
+			this.leaderboardEntries.push(bottomNote);
+			if (this.leaderboardGroup) {
+				this.leaderboardGroup.add(bottomNote);
+			}
+		}
 	}
 
 	/* END-USER-CODE */
