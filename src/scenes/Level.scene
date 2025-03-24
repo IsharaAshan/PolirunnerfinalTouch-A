@@ -1,0 +1,188 @@
+{
+    "id": "01aefa93-6044-4159-8358-7e91310aa05f",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Level",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Container",
+            "id": "b4082289-f826-4908-bc16-1a11fc43ecf8",
+            "label": "background-container",
+            "scope": "PUBLIC",
+            "blendMode": -1,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "721b1221-3968-4332-a1db-83ee15039b3f",
+                    "label": "background",
+                    "texture": {
+                        "key": "background"
+                    },
+                    "y": 355,
+                    "scaleY": 1.2
+                },
+                {
+                    "type": "Image",
+                    "id": "4618b846-6ee3-4452-909a-b2664d7e56e8",
+                    "label": "background_1",
+                    "texture": {
+                        "key": "background"
+                    },
+                    "x": 2661,
+                    "y": 355,
+                    "scaleY": 1.2
+                }
+            ]
+        },
+        {
+            "prefabId": "ca363b20-c107-4c7a-9e13-8a3196aab81a",
+            "id": "366d818d-96f4-4459-bad5-67c4c7d06097",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "obstacle",
+            "scope": "CLASS",
+            "x": 2235,
+            "y": 495
+        },
+        {
+            "prefabId": "e866c48a-52f1-4afe-981b-9fdbb9e95188",
+            "id": "66ef4158-5f47-49c0-95c3-0dfe854117a5",
+            "unlock": [
+                "x",
+                "y",
+                "animationPreview"
+            ],
+            "label": "player",
+            "scope": "CLASS",
+            "x": 640,
+            "y": 460,
+            "animationPreview": false
+        },
+        {
+            "prefabId": "ec29a800-ee53-4336-8eef-46e2a61cf508",
+            "id": "2f05eef6-db0a-495f-83f1-672463d4a429",
+            "unlock": [
+                "x",
+                "y"
+            ],
+            "label": "ground",
+            "x": 640,
+            "y": 586
+        },
+        {
+            "type": "Text",
+            "id": "a668d4c6-b252-41d5-86b8-1d270b6b4bed",
+            "label": "pausedisplaytext",
+            "scope": "CLASS",
+            "x": 543,
+            "y": 101,
+            "visible": false,
+            "text": "PAUSE",
+            "fontFamily": "ApexMk2-BoldExtended",
+            "fontSize": "55px",
+            "color": "#000000ff"
+        },
+        {
+            "type": "Container",
+            "id": "c0d207f7-e203-4db1-86fd-5ea369fb5d2b",
+            "label": "UI",
+            "blendMode": -1,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "3d2d58dd-9d33-435d-808d-f5de4b9db940",
+                    "label": "pause_button",
+                    "scope": "CLASS",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 69,
+                    "hitArea.height": 71,
+                    "texture": {
+                        "key": "pause"
+                    },
+                    "x": 1220,
+                    "y": 60,
+                    "scaleX": 0.8,
+                    "scaleY": 0.8
+                },
+                {
+                    "type": "Image",
+                    "id": "ef53d111-c8a9-4a8a-b3b0-3546925c93ba",
+                    "label": "jump_button",
+                    "scope": "CLASS",
+                    "hitArea.shape": "CIRCLE",
+                    "hitArea.x": 44,
+                    "hitArea.y": 44,
+                    "hitArea.radius": 44,
+                    "texture": {
+                        "key": "jump"
+                    },
+                    "x": 1092,
+                    "y": 576
+                },
+                {
+                    "type": "Container",
+                    "id": "f3a92e4f-823c-4e3f-b8e9-a132bc12ce60",
+                    "label": "score-container",
+                    "blendMode": -1,
+                    "x": 18,
+                    "y": 50,
+                    "list": [
+                        {
+                            "type": "Text",
+                            "id": "622da3db-0c46-4821-9fbc-a49519c87573",
+                            "label": "scorevalue",
+                            "scope": "PUBLIC",
+                            "x": 109,
+                            "text": "9999",
+                            "fontFamily": "ApexMk2-BoldExtended",
+                            "fontSize": "30px",
+                            "color": "#000000ff"
+                        },
+                        {
+                            "type": "Text",
+                            "id": "35b02576-c285-4fcc-b5da-3160091324fa",
+                            "label": "scoretext",
+                            "text": "SCORE:\n",
+                            "fontFamily": "ApexMk2-BoldExtended",
+                            "fontSize": "30px",
+                            "color": "#000000ff"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "plainObjects": [
+        {
+            "id": "1dfef2a4-5031-4f7c-88b3-c5d9c095991c",
+            "type": "Collider",
+            "label": "player_ground",
+            "object1": "player",
+            "object2": "ground"
+        },
+        {
+            "id": "61f52afb-b30a-4654-aae0-53ac7e345934",
+            "type": "Collider",
+            "label": "player_obstacle",
+            "object1": "player",
+            "object2": "obstacle",
+            "overlapOnly": true
+        }
+    ],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

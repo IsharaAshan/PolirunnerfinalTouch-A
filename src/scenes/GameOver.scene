@@ -1,0 +1,235 @@
+{
+    "id": "c1101200-32e1-4f02-9f9c-26871b1fd1cc",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "GameOver",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "bbd69a56-c70c-4934-ba24-9247447ab41f",
+            "label": "background",
+            "texture": {
+                "key": "background"
+            },
+            "x": 640,
+            "y": 366,
+            "scaleY": 1.2
+        },
+        {
+            "type": "Sprite",
+            "id": "b478b5c5-7c95-4e00-897d-5895a4fa1aa2",
+            "label": "playerholderSprite",
+            "texture": {
+                "key": "playerstand",
+                "frame": 0
+            },
+            "x": 232,
+            "y": 540,
+            "scaleX": 1.444944303492753,
+            "scaleY": 1.444944303492753,
+            "animationPlayMethod": 1,
+            "animationKey": "playerstandplayerstand"
+        },
+        {
+            "type": "Container",
+            "id": "22341b69-3575-4e75-85e9-3598c43975d1",
+            "label": "game_over_Container",
+            "x": 640,
+            "y": 360,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "32913b0e-7d42-4dc6-979e-b9ca8a47a404",
+                    "label": "gamover_background",
+                    "texture": {
+                        "key": "gamover background"
+                    },
+                    "alpha": 0.9,
+                    "alphaTopLeft": 0.9,
+                    "alphaTopRight": 0.9,
+                    "alphaBottomLeft": 0.9,
+                    "alphaBottomRight": 0.9
+                },
+                {
+                    "type": "Text",
+                    "id": "0f2ae6cd-f3a1-4f9b-86b1-c155af7c9947",
+                    "label": "score_text",
+                    "x": -58,
+                    "y": -200,
+                    "text": "score",
+                    "fontFamily": "ApexMk2-BoldExtended",
+                    "fontSize": "35px"
+                },
+                {
+                    "type": "Text",
+                    "id": "4ee60ff3-5b51-41c6-a92d-774159e48686",
+                    "label": "gameover_text_",
+                    "x": -122,
+                    "y": -259,
+                    "text": "GAME OVER",
+                    "fontFamily": "ApexMk2-BoldExtended",
+                    "fontSize": "43px"
+                },
+                {
+                    "type": "Text",
+                    "id": "fa9001f4-b70a-464a-9b12-eb612017fc06",
+                    "label": "score_value",
+                    "scope": "PUBLIC",
+                    "x": -50,
+                    "y": -154,
+                    "text": "00000",
+                    "fontFamily": "ApexMk2-BoldExtended",
+                    "fontSize": "30px"
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "21c2aa14-ab54-4a6e-b90e-31ceac74e764",
+                    "label": "input_field_bscadress",
+                    "scope": "PUBLIC",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 128,
+                    "hitArea.height": 128,
+                    "y": 31,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "strokeColor": "#ffffff",
+                    "isStroked": true,
+                    "width": 250,
+                    "height": 30
+                },
+                {
+                    "type": "Rectangle",
+                    "id": "b55ece6f-9f7c-4da6-a023-ce8149203123",
+                    "label": "input_field_nickname",
+                    "scope": "PUBLIC",
+                    "hitArea.shape": "RECTANGLE",
+                    "hitArea.width": 128,
+                    "hitArea.height": 128,
+                    "y": -20,
+                    "isFilled": true,
+                    "fillColor": "#000000",
+                    "strokeColor": "#ffffff",
+                    "isStroked": true,
+                    "width": 250,
+                    "height": 30
+                },
+                {
+                    "type": "Image",
+                    "id": "0e6273c3-8180-42f5-9278-f0ee91f1109b",
+                    "label": "submitbutton",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "SUBMIT"
+                    },
+                    "x": 5,
+                    "y": 83,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "type": "Image",
+                    "id": "950f0bc7-27d1-4218-bcbb-84bb232f6309",
+                    "label": "restart",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "Restart"
+                    },
+                    "y": 166,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "type": "Image",
+                    "id": "b1f69a2d-db70-46ae-8f0a-ed7b0d838773",
+                    "label": "home",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "Home"
+                    },
+                    "y": 232,
+                    "scaleX": 0.5,
+                    "scaleY": 0.5
+                },
+                {
+                    "type": "Text",
+                    "id": "bad29e6a-0c34-493c-bf6e-95913d5c9811",
+                    "label": "input_msg",
+                    "scope": "PUBLIC",
+                    "x": -50,
+                    "y": -94,
+                    "align": "center",
+                    "fontStyle": "bold"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "id": "76cfa698-1eae-4ac1-b99a-810daad9c4ea",
+            "label": "leaderboard container",
+            "x": 1046,
+            "y": 371,
+            "list": [
+                {
+                    "type": "Image",
+                    "id": "85c19fb6-51bf-4bf8-9669-f875ef6d48d0",
+                    "label": "image_1",
+                    "texture": {
+                        "key": "gamover background"
+                    },
+                    "scaleX": 0.8,
+                    "scaleY": 0.8,
+                    "alpha": 0.8,
+                    "alphaTopLeft": 0.8,
+                    "alphaTopRight": 0.8,
+                    "alphaBottomLeft": 0.8,
+                    "alphaBottomRight": 0.8
+                },
+                {
+                    "type": "Text",
+                    "id": "60bf949b-7a40-40e4-b166-654b664328cc",
+                    "label": "leaderboard",
+                    "x": -69,
+                    "y": -205,
+                    "text": "Leaderboard",
+                    "fontFamily": "ApexMk2-BoldExtended",
+                    "fontSize": "20px"
+                },
+                {
+                    "type": "Text",
+                    "id": "86759d44-f1b8-4510-9609-6b165c03b8aa",
+                    "label": "leaderbaord_score",
+                    "x": 60,
+                    "y": -170,
+                    "text": "score",
+                    "resolution": 2,
+                    "fontFamily": "ApexMk2-BoldExtended"
+                },
+                {
+                    "type": "Text",
+                    "id": "4c95a8d3-81a2-4649-87d4-3f78c1acb620",
+                    "label": "leaderbaord_nicknames",
+                    "x": -120,
+                    "y": -170,
+                    "text": "NIckName",
+                    "resolution": 2,
+                    "fontFamily": "ApexMk2-BoldExtended"
+                }
+            ]
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}

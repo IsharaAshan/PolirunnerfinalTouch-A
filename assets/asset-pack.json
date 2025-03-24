@@ -1,0 +1,235 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "assets/fonts/ApexMk2-BoldExtended.otf",
+                "format": "opentype",
+                "descriptors": {},
+                "type": "font",
+                "key": "ApexMk2-BoldExtended"
+            },
+            {
+                "url": "assets/background.png",
+                "type": "image",
+                "key": "background"
+            },
+            {
+                "url": "assets/ostacles/broccoli.png",
+                "type": "image",
+                "key": "broccoli"
+            },
+            {
+                "url": "assets/ostacles/carrot.png",
+                "type": "image",
+                "key": "carrot"
+            },
+            {
+                "url": [
+                    "assets/audio/clicksfx.wav"
+                ],
+                "type": "audio",
+                "key": "click"
+            },
+            {
+                "url": "assets/buttons/closebutton.png",
+                "type": "image",
+                "key": "closebutton"
+            },
+            {
+                "url": "assets/floor.png",
+                "type": "image",
+                "key": "floor"
+            },
+            {
+                "url": [
+                    "assets/audio/gameOversfx.wav"
+                ],
+                "type": "audio",
+                "key": "gameOver"
+            },
+            {
+                "url": "assets/gamover background.png",
+                "type": "image",
+                "key": "gamover background"
+            },
+            {
+                "url": [
+                    "assets/audio/groundhitsfx.wav"
+                ],
+                "type": "audio",
+                "key": "groundhit"
+            },
+            {
+                "url": [
+                    "assets/audio/hitsfx.wav"
+                ],
+                "type": "audio",
+                "key": "hit"
+            },
+            {
+                "url": "assets/buttons/Home.png",
+                "type": "image",
+                "key": "Home"
+            },
+            {
+                "url": "assets/buttons/jump.png",
+                "type": "image",
+                "key": "jump"
+            },
+            {
+                "url": [
+                    "assets/audio/jumpsfx.wav"
+                ],
+                "type": "audio",
+                "key": "jump"
+            },
+            {
+                "url": [
+                    "assets/audio/logMsgSfx.wav"
+                ],
+                "type": "audio",
+                "key": "logMsgSfx"
+            },
+            {
+                "url": [
+                    "assets/audio/logsfx.wav"
+                ],
+                "type": "audio",
+                "key": "logsfx"
+            },
+            {
+                "url": "assets/ostacles/onion.png",
+                "type": "image",
+                "key": "onion"
+            },
+            {
+                "url": "assets/fonts/Oswald-SemiBold.ttf",
+                "format": "truetype",
+                "descriptors": {},
+                "type": "font",
+                "key": "Oswald-SemiBold"
+            },
+            {
+                "url": "assets/buttons/pause.png",
+                "type": "image",
+                "key": "pause"
+            },
+            {
+                "url": "assets/buttons/Playbutton.png",
+                "type": "image",
+                "key": "Playbutton"
+            },
+            {
+                "url": "src/animations/player-animationsfile/player-jump.json",
+                "type": "animation",
+                "key": "playerjump"
+            },
+            {
+                "url": "assets/player/playerJump.png",
+                "frameConfig": {
+                    "frameWidth": 130,
+                    "frameHeight": 130,
+                    "startFrame": 0,
+                    "endFrame": 10,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "playerJump"
+            },
+            {
+                "url": "assets/player/playerstand.png",
+                "frameConfig": {
+                    "frameWidth": 130,
+                    "frameHeight": 130,
+                    "startFrame": 0,
+                    "endFrame": 11,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "playerstand"
+            },
+            {
+                "url": "src/animations/playerstand.json",
+                "type": "animation",
+                "key": "playerstand_1"
+            },
+            {
+                "url": "src/animations/player-animationsfile/playerwalk.json",
+                "type": "animation",
+                "key": "playerwalk"
+            },
+            {
+                "url": "assets/player/playerWalk.png",
+                "frameConfig": {
+                    "frameWidth": 130,
+                    "frameHeight": 130,
+                    "startFrame": 0,
+                    "endFrame": 9,
+                    "spacing": 0,
+                    "margin": 0
+                },
+                "type": "spritesheet",
+                "key": "playerWalk"
+            },
+            {
+                "url": [
+                    "assets/audio/popupsfx.wav"
+                ],
+                "type": "audio",
+                "key": "popup"
+            },
+            {
+                "url": "assets/ostacles/radish.png",
+                "type": "image",
+                "key": "radish"
+            },
+            {
+                "url": "assets/buttons/Restart.png",
+                "type": "image",
+                "key": "Restart"
+            },
+            {
+                "url": "assets/buttons/resume.png",
+                "type": "image",
+                "key": "resume"
+            },
+            {
+                "url": "assets/buttons/SUBMIT.png",
+                "type": "image",
+                "key": "SUBMIT"
+            },
+            {
+                "url": [
+                    "assets/audio/submitSfx.wav"
+                ],
+                "type": "audio",
+                "key": "submitsfx"
+            },
+            {
+                "url": "assets/Title.png",
+                "type": "image",
+                "key": "Title"
+            },
+            {
+                "url": "assets/ostacles/turnip.png",
+                "type": "image",
+                "key": "turnip"
+            },
+            {
+                "url": "assets/ostacles/turnipv2.png",
+                "type": "image",
+                "key": "turnipv2"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false,
+        "visible": true
+    }
+}

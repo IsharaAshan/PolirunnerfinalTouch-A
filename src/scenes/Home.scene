@@ -1,0 +1,94 @@
+{
+    "id": "5c547140-0584-4921-ab6f-a16d6d1eb38f",
+    "sceneType": "SCENE",
+    "settings": {
+        "exportClass": true,
+        "autoImport": true,
+        "importFileExtension": true,
+        "preloadPackFiles": [],
+        "createMethodName": "editorCreate",
+        "sceneKey": "Home",
+        "borderWidth": 1280,
+        "borderHeight": 720
+    },
+    "displayList": [
+        {
+            "type": "Image",
+            "id": "67fa509d-8be8-48ac-b233-7418c0291e69",
+            "label": "background",
+            "texture": {
+                "key": "background"
+            },
+            "x": 640,
+            "y": 346,
+            "scaleY": 1.25
+        },
+        {
+            "type": "Container",
+            "id": "02b91ea0-f5e3-405a-8330-24605cbf4975",
+            "label": "container_1",
+            "blendMode": -1,
+            "list": [
+                {
+                    "type": "Sprite",
+                    "id": "b7d39aee-f9b5-4d15-8540-c0814ff71f5f",
+                    "label": "playerholderSprite",
+                    "texture": {
+                        "key": "playerstand",
+                        "frame": 0
+                    },
+                    "x": 405,
+                    "y": 505,
+                    "scaleX": 1.444944303492753,
+                    "scaleY": 1.444944303492753,
+                    "animationPlayMethod": 1,
+                    "animationKey": "playerstandplayerstand"
+                },
+                {
+                    "type": "Image",
+                    "id": "0283420b-635b-4ddc-a423-922ecbf4840f",
+                    "label": "Title",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "Title"
+                    },
+                    "x": 640,
+                    "y": 207,
+                    "scaleX": 1.569421301620529,
+                    "scaleY": 1.569421301620529
+                },
+                {
+                    "type": "Image",
+                    "id": "02a49eb0-b5aa-45d0-901f-6131f30a0a64",
+                    "label": "playbutton",
+                    "scope": "PUBLIC",
+                    "texture": {
+                        "key": "Playbutton"
+                    },
+                    "x": 640,
+                    "y": 566,
+                    "scaleX": 1.392321441500016,
+                    "scaleY": 1.392321441500016
+                }
+            ]
+        },
+        {
+            "type": "Text",
+            "id": "f0d2197f-3bfa-4c7e-8d48-6d1bbd8ce029",
+            "label": "mainmsg",
+            "scope": "PUBLIC",
+            "x": 560,
+            "y": 65,
+            "fontFamily": "ApexMk2-BoldExtended",
+            "fontSize": "25px",
+            "color": "#000000ff"
+        }
+    ],
+    "plainObjects": [],
+    "meta": {
+        "app": "Phaser Editor - Scene Editor",
+        "url": "https://phaser.io/editor",
+        "contentType": "phasereditor2d.core.scene.SceneContentType",
+        "version": 5
+    }
+}
