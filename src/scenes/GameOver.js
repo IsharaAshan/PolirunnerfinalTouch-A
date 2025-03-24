@@ -249,12 +249,12 @@ export default class GameOver extends Phaser.Scene {
 				</div>
 
 				<div style="text-align: center; margin-top: 25px;">
-					<button type="submit" id="submit-button" style="padding: 12px 24px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; height: 55px;">Submit Score</button>
+					<button type="submit" id="submit-button" style="padding: 12px 24px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; min-height: 55px; min-width: 160px; width: 85%; max-width: 250px;">Submit Score</button>
 				</div>
 
-				<div style="display: flex; justify-content: center; gap: 25px; margin-top: 35px;">
-					<button type="button" id="restart-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; height: 45px;">Restart</button>
-					<button type="button" id="home-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; height: 45px;">Home</button>
+				<div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
+					<button type="button" id="restart-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; min-height: 45px; min-width: 120px; flex: 1 1 120px; max-width: 160px;">Restart</button>
+					<button type="button" id="home-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; min-height: 45px; min-width: 120px; flex: 1 1 120px; max-width: 160px;">Home</button>
 				</div>
 			</form>
 		`;
@@ -447,6 +447,7 @@ export default class GameOver extends Phaser.Scene {
 		const viewportHeight = window.innerHeight;
 		const isSmallScreen = viewportWidth < 480 || viewportHeight < 400;
 		const isVerySmallScreen = viewportWidth < 360 || viewportHeight < 350;
+		const isPortrait = viewportHeight > viewportWidth;
 
 		// Calculate scale based on game container's dimensions
 		const gameBaseWidth = 1280;
@@ -455,12 +456,12 @@ export default class GameOver extends Phaser.Scene {
 		const containerScaleY = containerRect.height / gameBaseHeight;
 		const containerScale = Math.min(containerScaleX, containerScaleY);
 
-		 // Set form size
+		// Set form size
 		let formWidthPercent = isSmallScreen ? 0.95 : 0.85;
 		const formWidth = Math.min(750, containerRect.width * formWidthPercent);
 		formElement.style.width = `${formWidth}px`;
 
-		 // Position form at the top center
+		// Position form at the top center
 		formElement.style.position = 'absolute';
 		formElement.style.left = '50%';
 		formElement.style.top = '20px';
@@ -511,40 +512,71 @@ export default class GameOver extends Phaser.Scene {
 			scoreDisplay.style.marginBottom = '10px';
 		}
 
-		// Adjust buttons
+		// Adjust buttons for better mobile experience
 		const buttons = formElement.querySelectorAll('button');
 		buttons.forEach(button => {
 			const isActionButton = button.id === 'submit-button';
-			const vertPadding = isSmallScreen ? 6 : 8;
-			const horizPadding = isSmallScreen ? 12 : 16;
-
-			button.style.padding = `${vertPadding * containerScale}px ${horizPadding * containerScale}px`;
-			button.style.fontSize = `${Math.max(12, isActionButton ? 16 * containerScale : 14 * containerScale)}px`;
-			button.style.height = `${Math.max(40, 55 * containerScale)}px`;
-
+			
+			// Adjust button sizes based on screen size
 			if (isVerySmallScreen) {
-				if (isActionButton) {
-					button.style.marginTop = '10px';
-				} else if (button.parentElement && button.parentElement.style.display === 'flex') {
-					button.parentElement.style.flexDirection = isPortrait ? 'column' : 'row';
-					button.parentElement.style.gap = isPortrait ? '15px' : '25px';
-				}
+				button.style.fontSize = isActionButton ? '16px' : '14px';
+				button.style.padding = isActionButton ? '10px 18px' : '8px 15px';
+				button.style.minHeight = isActionButton ? '45px' : '40px';
+				button.style.margin = '5px';
+			} else if (isSmallScreen) {
+				button.style.fontSize = isActionButton ? '17px' : '15px';
+				button.style.padding = isActionButton ? '11px 20px' : '10px 16px'; 
+				button.style.minHeight = isActionButton ? '50px' : '42px';
 			}
+			
+			// Ensure touch-friendly tap targets
+			button.style.minWidth = isVerySmallScreen ? '100px' : '120px';
 		});
+		
+		// Handle button container layout for different orientations
+		const buttonContainer = formElement.querySelector('div[style*="display: flex"]');
+		if (buttonContainer) {
+			if (isVerySmallScreen && isPortrait) {
+				// Stack buttons vertically on very small portrait screens
+				buttonContainer.style.flexDirection = 'column';
+				buttonContainer.style.gap = '15px';
+				buttonContainer.style.alignItems = 'center';
+				
+				// Make buttons wider when stacked
+				const navButtons = buttonContainer.querySelectorAll('button');
+				navButtons.forEach(btn => {
+					btn.style.width = '80%';
+					btn.style.maxWidth = '200px';
+				});
+			} else {
+				// Side by side for landscape or larger screens
+				buttonContainer.style.flexDirection = 'row';
+				buttonContainer.style.gap = isSmallScreen ? '15px' : '20px';
+			}
+		}
 
-		// Adjust inputs
+		// Adjust submit button for smaller screens
+		const submitButton = formElement.querySelector('#submit-button');
+		if (submitButton) {
+			if (isVerySmallScreen) {
+				submitButton.style.width = '90%';
+				submitButton.style.margin = '0 auto';
+			}
+		}
+
+		// Adjust input fields
 		const inputs = formElement.querySelectorAll('input');
 		inputs.forEach(input => {
-			input.style.padding = `${Math.max(6, 10 * containerScale)}px`;
-			input.style.fontSize = `${Math.max(12, 16 * containerScale)}px`;
-			input.style.height = `${Math.max(35, 50 * containerScale)}px`;
+			input.style.padding = isVerySmallScreen ? '8px' : '10px';
+			input.style.height = isVerySmallScreen ? '40px' : '45px';
+			input.style.fontSize = isVerySmallScreen ? '14px' : '16px';
 		});
 
-		// Adjust margins for small screens
+		// Adjust form section spacing
 		if (isVerySmallScreen) {
-			const containers = formElement.querySelectorAll('div[style*="margin-bottom"]');
-			containers.forEach(container => {
-				container.style.marginBottom = '10px';
+			const formSections = formElement.querySelectorAll('div[style*="margin-bottom"]');
+			formSections.forEach(section => {
+				section.style.marginBottom = '12px';
 			});
 		}
 	}
