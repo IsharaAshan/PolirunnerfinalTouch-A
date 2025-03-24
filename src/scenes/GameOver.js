@@ -249,12 +249,12 @@ export default class GameOver extends Phaser.Scene {
 				</div>
 
 				<div style="text-align: center; margin-top: 25px;">
-					<button type="submit" id="submit-button" style="padding: 12px 24px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 18px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; min-height: 55px; min-width: 160px; width: 85%; max-width: 250px;">Submit Score</button>
+					<button type="submit" id="submit-button" style="padding: 15px 28px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 20px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; min-height: 60px; min-width: 180px; width: 90%; max-width: 300px; margin: 0 auto; display: block; touch-action: manipulation;">Submit Score</button>
 				</div>
 
-				<div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap;">
-					<button type="button" id="restart-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; min-height: 45px; min-width: 120px; flex: 1 1 120px; max-width: 160px;">Restart</button>
-					<button type="button" id="home-button" style="padding: 10px 18px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 16px; font-weight: bold; text-transform: uppercase; min-height: 45px; min-width: 120px; flex: 1 1 120px; max-width: 160px;">Home</button>
+				<div style="display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; width: 100%;">
+					<button type="button" id="restart-button" style="padding: 12px 20px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 18px; font-weight: bold; text-transform: uppercase; min-height: 55px; min-width: 130px; flex: 1 1 40%; max-width: 180px; touch-action: manipulation;">Restart</button>
+					<button type="button" id="home-button" style="padding: 12px 20px; background-color: #000000; color: white; border: 3px solid #ffffff; border-radius: 6px; cursor: pointer; font-family: 'ApexMk2-BoldExtended', Arial, sans-serif; font-size: 18px; font-weight: bold; text-transform: uppercase; min-height: 55px; min-width: 130px; flex: 1 1 40%; max-width: 180px; touch-action: manipulation;">Home</button>
 				</div>
 			</form>
 		`;
@@ -516,8 +516,6 @@ export default class GameOver extends Phaser.Scene {
 		const buttons = formElement.querySelectorAll('button');
 		buttons.forEach(button => {
 			const isActionButton = button.id === 'submit-button';
-			
-			// Adjust button sizes based on screen size
 			if (isVerySmallScreen) {
 				button.style.fontSize = isActionButton ? '16px' : '14px';
 				button.style.padding = isActionButton ? '10px 18px' : '8px 15px';
@@ -525,10 +523,9 @@ export default class GameOver extends Phaser.Scene {
 				button.style.margin = '5px';
 			} else if (isSmallScreen) {
 				button.style.fontSize = isActionButton ? '17px' : '15px';
-				button.style.padding = isActionButton ? '11px 20px' : '10px 16px'; 
+				button.style.padding = isActionButton ? '11px 20px' : '10px 16px';
 				button.style.minHeight = isActionButton ? '50px' : '42px';
 			}
-			
 			// Ensure touch-friendly tap targets
 			button.style.minWidth = isVerySmallScreen ? '100px' : '120px';
 		});
@@ -541,7 +538,6 @@ export default class GameOver extends Phaser.Scene {
 				buttonContainer.style.flexDirection = 'column';
 				buttonContainer.style.gap = '15px';
 				buttonContainer.style.alignItems = 'center';
-				
 				// Make buttons wider when stacked
 				const navButtons = buttonContainer.querySelectorAll('button');
 				navButtons.forEach(btn => {
@@ -554,31 +550,6 @@ export default class GameOver extends Phaser.Scene {
 				buttonContainer.style.gap = isSmallScreen ? '15px' : '20px';
 			}
 		}
-
-		// Adjust submit button for smaller screens
-		const submitButton = formElement.querySelector('#submit-button');
-		if (submitButton) {
-			if (isVerySmallScreen) {
-				submitButton.style.width = '90%';
-				submitButton.style.margin = '0 auto';
-			}
-		}
-
-		// Adjust input fields
-		const inputs = formElement.querySelectorAll('input');
-		inputs.forEach(input => {
-			input.style.padding = isVerySmallScreen ? '8px' : '10px';
-			input.style.height = isVerySmallScreen ? '40px' : '45px';
-			input.style.fontSize = isVerySmallScreen ? '14px' : '16px';
-		});
-
-		// Adjust form section spacing
-		if (isVerySmallScreen) {
-			const formSections = formElement.querySelectorAll('div[style*="margin-bottom"]');
-			formSections.forEach(section => {
-				section.style.marginBottom = '12px';
-			});
-		}
 	}
 
 	// Cleanup when scene is shut down
@@ -586,7 +557,6 @@ export default class GameOver extends Phaser.Scene {
 		if (this.formContainer && this.formContainer.parentNode) {
 			this.formContainer.parentNode.removeChild(this.formContainer);
 		}
-
 		if (this.adjustFormToCanvas) {
 			window.removeEventListener('resize', this.adjustFormToCanvas);
 		}
@@ -605,7 +575,6 @@ export default class GameOver extends Phaser.Scene {
 					.select('nick_name, score')
 					.order('score', { ascending: false })
 					.limit(10);
-				
 				if (error) {
 					console.error("Error fetching leaderboard data:", error);
 				} else {
@@ -615,7 +584,6 @@ export default class GameOver extends Phaser.Scene {
 			} else {
 				console.warn("Supabase service not available");
 			}
-			
 			// Display the data in the leaderboard
 			this.displayLeaderboardData(leaderboardData, x, startY, panelWidth);
 		} catch (error) {
@@ -623,7 +591,7 @@ export default class GameOver extends Phaser.Scene {
 		}
 	}
 
-	// Add method to display leaderboard entries - removed animations
+	// Add method to display leaderboard entries
 	displayLeaderboardData(leaderboardData, x, startY, panelWidth) {
 		const spacing = 40; // Vertical space between entries
 		
@@ -631,9 +599,8 @@ export default class GameOver extends Phaser.Scene {
 		if (this.leaderboardEntries) {
 			this.leaderboardEntries.forEach(entry => entry.destroy());
 		}
-		
 		this.leaderboardEntries = [];
-		
+
 		// If no data or empty array, show a message
 		if (!leaderboardData || leaderboardData.length === 0) {
 			const noDataText = this.add.text(
@@ -649,20 +616,18 @@ export default class GameOver extends Phaser.Scene {
 			);
 			noDataText.setOrigin(0.5, 0);
 			this.leaderboardEntries.push(noDataText);
-			
 			// Add the text to the leaderboard group
 			if (this.leaderboardGroup) {
 				this.leaderboardGroup.add(noDataText);
 			}
 			return;
 		}
-		
+
 		// Display each entry without animations
 		leaderboardData.forEach((entry, index) => {
 			// Nickname text (left-aligned)
-			const nickname = entry.nick_name || "Anonymous"; 
+			const nickname = entry.nick_name || "Anonymous";
 			const displayName = nickname.length > 10 ? nickname.substring(0, 9) + "..." : nickname;
-			
 			const nameText = this.add.text(
 				x + 30,
 				startY + index * spacing,
@@ -673,7 +638,7 @@ export default class GameOver extends Phaser.Scene {
 					color: '#ffffff'
 				}
 			);
-			
+
 			// Score text (right-aligned)
 			const scoreText = this.add.text(
 				x + panelWidth - 40,
@@ -686,9 +651,9 @@ export default class GameOver extends Phaser.Scene {
 				}
 			);
 			scoreText.setOrigin(1, 0); // Right align the score
-			
+
 			this.leaderboardEntries.push(nameText, scoreText);
-			
+
 			// Add entries to group without animations
 			if (this.leaderboardGroup) {
 				this.leaderboardGroup.add(nameText);
